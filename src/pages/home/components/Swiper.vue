@@ -32,14 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper /deep/ .swiper-pagination-bullet-active {
+.wrapper /deep/ .swiper-pagination-bullet-active{
   background: #fff;
 }
 .wrapper {
   overflow: hidden;
   width: 100%;
   height:0;
-  padding-bottom: 31.25%;
+  padding-bottom: 26.66%;
   .swiper-img {
     width:100%;
   }
