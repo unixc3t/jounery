@@ -3,3 +3,9 @@ $main-font-size:50px;
   #{$property}: #{$value *50}px;
   #{$property}: #{$value}rem;
 }
+
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

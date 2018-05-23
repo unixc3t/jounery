@@ -1,86 +1,93 @@
 <template>
   <div class="icons">
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
-    <div class="icon">
-      <div class="icon-img">
-        <img class="icon-img-content" src="static/images/index-icon1.png" alt="">
-      </div>
-      <p class="icon-desc">
-        热门景点
-      </p>
-    </div>
+      <swiper>
+        <swiper-slide v-for="(page, index) of pages" :key="index">
+          <div class="icon" v-for="item of pages[index]" :key="item.id">
+            <div class="icon-img">
+              <img class="icon-img-content" :src="item.imgUrl" alt="">
+            </div>
+            <p class="icon-desc">
+              {{item.desc}}
+            </p>
+          </div>
+      </swiper-slide>
+         <div class="swiper-pagination"  slot="pagination"></div>
+      </swiper>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeIcons'
+  name: 'HomeIcons',
+  data () {
+    return ({
+      iconList: [
+        {
+          id: '0001',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0002',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0003',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0004',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0005',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0006',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0007',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0008',
+          imgUrl: 'static/images/icon-index1.png',
+          desc: '景点门票'
+        }, {
+          id: '0009',
+          imgUrl: 'static/images/icon-index2.png',
+          desc: '必游榜单'
+        }
+
+      ]
+    })
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+        }
+
+        pages[page].push(item)
+      })
+      return pages
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~styles/base.scss';
 @import '~styles/varibles.scss';
-  .icons{
-    width: 100%;
+  .icons >>> .swiper-container{
     height: 0;
     padding-bottom: 50%;
-    .icon{
+  }
+   .icon{
       position: relative;
       float: left;
       width: 25%;
@@ -109,7 +116,7 @@ export default {
         @include x-rem(height,.44);
         text-align: center;
         color:$darkTextColor;
+        @include ellipsis;
       }
     }
-  }
 </style>
