@@ -4,11 +4,15 @@
     <div class="iconfont icon-back">&#xe600;</div>
   </div>
   <div class="header-input">
-    <span class="iconfont">&#xe612;</span>输入城市/景点/游玩主题</div>
+    <span class="iconfont">&#xe612;</span>
+    输入城市/景点/游玩主题
+  </div>
+  <router-link  to="/city">
   <div class="header-right">
     {{this.city}}
     <span class="iconfont arrow-icon">&#xe61c;</span>
   </div>
+  </router-link>
 </div>
 </template>
 
@@ -27,7 +31,7 @@ export default {
 .header {
   display: flex;
   background: $bgColor;
-  @include x-rem(line-height,.86);
+  @include x-rem(line-height,$headerHeight);
   color: #fff;
   .header-left {
       @include x-rem(width,.64);
@@ -52,6 +56,7 @@ export default {
     @include x-rem(width,1.24);
     float:right;
     text-align: center;
+    color: #fff;
     .arrow-icon{
       @include x-rem(font-size,.2);
       @include x-rem(margin-left,-.04);
