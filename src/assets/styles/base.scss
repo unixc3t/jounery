@@ -1,7 +1,16 @@
 $main-font-size:50px;
-@mixin x-rem($property, $value) {
-  #{$property}: #{$value *50}px;
-  #{$property}: #{$value}rem;
+@mixin x-rem($property, $value, $arg...) {
+  @if $arg {
+    $a:();
+    @each $i in $arg {
+      $a: append($a, $i);
+    }
+    #{$property}: #{$value *50}px $a;
+    #{$property}: #{$value}rem $a;
+  } @else {
+    #{$property}: #{$value *50}px;
+    #{$property}: #{$value}rem;
+  }
 }
 
 @mixin ellipsis {
