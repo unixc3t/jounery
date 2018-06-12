@@ -106,7 +106,7 @@ export default {
         top:0;
         left:0;
         right:0;
-        @include x-rem(bottom,.22);
+        @include x-rem(bottom,.33);
         box-sizing: border-box;
         @include x-rem(padding,.1);
         .icon-img-content {
