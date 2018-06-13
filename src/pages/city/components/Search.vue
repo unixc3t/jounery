@@ -5,13 +5,14 @@
     </div>
     <div class="search-content" ref="search" v-show="keyword">
       <ul>
-        <li class="search-item border-bottom" v-for = "item of list" :key="item.id" >{{item.name}}</li>
+        <li class="search-item border-bottom" v-for = "item of list" @click="handleHotCity(item.name)" :key="item.id" >{{item.name}}</li>
         <li class="search-item border-bottom" v-show = "hasNoData">没有找到数据</li>
       </ul>
     </div>
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CitySearch',
@@ -54,6 +55,14 @@ export default {
         this.list = result
       }, 100)
     }
+  },
+  methods: {
+    handleHotCity (city) {
+      // this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapActions(['changeCity'])
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.search)
