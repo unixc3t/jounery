@@ -7,7 +7,7 @@
     <router-link to="/">
       <div class="iconfont header-fixed-back">&#xe600;</div>
     </router-link>
-     内容详情
+     景点详情
    </div>
  </div>
 </template>
@@ -70,6 +70,7 @@ export default {
 }
 
 .header-fixed {
+  z-index:2;
     position: fixed;
     top: 0;
     left: 0;
