@@ -7,7 +7,7 @@
     <router-link to="/">
       <div class="iconfont header-fixed-back">&#xe600;</div>
     </router-link>
-     website info
+     内容详情
    </div>
  </div>
 </template>
@@ -41,6 +41,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
